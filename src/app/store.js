@@ -1,5 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { carsApi } from "../features/cars/carsApi";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    [carsApi.reducerPath]: carsApi.reducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(carsApi.middleware),
 });
